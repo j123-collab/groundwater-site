@@ -1187,12 +1187,15 @@
       const ctx = canvas.getContext('2d');
       const dpr = window.devicePixelRatio || 1;
 
-      /* Four layers: back → front. Each has its own frequency, amplitude, speed, phase offset. */
+      /* Seven layers, tightly stacked ~10px apart (back → front). */
       const LAYERS = [
-        { alpha: 0.22, amp: 30, freq: 0.60, speed: 0.00018, phase: 0.0,  base: 0.38 },
-        { alpha: 0.42, amp: 24, freq: 0.95, speed: 0.00030, phase: 2.20, base: 0.50 },
-        { alpha: 0.65, amp: 18, freq: 0.75, speed: 0.00044, phase: 1.10, base: 0.62 },
-        { alpha: 1.00, amp: 13, freq: 1.15, speed: 0.00058, phase: 3.60, base: 0.74 },
+        { alpha: 0.15, amp: 16, freq: 0.58, speed: 0.00015, phase: 0.0,  base: 0.28 },
+        { alpha: 0.28, amp: 13, freq: 0.88, speed: 0.00024, phase: 1.90, base: 0.37 },
+        { alpha: 0.42, amp: 11, freq: 0.70, speed: 0.00034, phase: 3.20, base: 0.46 },
+        { alpha: 0.56, amp:  9, freq: 1.02, speed: 0.00044, phase: 1.05, base: 0.54 },
+        { alpha: 0.70, amp:  8, freq: 0.80, speed: 0.00052, phase: 2.60, base: 0.61 },
+        { alpha: 0.85, amp:  7, freq: 1.15, speed: 0.00060, phase: 0.80, base: 0.68 },
+        { alpha: 1.00, amp:  6, freq: 0.95, speed: 0.00068, phase: 3.80, base: 0.75 },
       ];
       const COLOR = '#4a88bb';
 
