@@ -2475,7 +2475,7 @@ if (window.innerWidth >= 768) {
       dots[currentIndex].classList.add('active');
       updateDepthMarkers(index, goingDown);
       waveTurbulence = 1.0;
-      setTimeout(function () { transitioning = false; }, 600);
+      setTimeout(function () { transitioning = false; wheelAccum = 0; }, 600);
     }
 
     strata[0].classList.add('active');
@@ -2484,22 +2484,23 @@ if (window.innerWidth >= 768) {
 
     var wheelAccum = 0;
     var wheelTimer = null;
-    var WHEEL_THRESHOLD = 80;
+    var WHEEL_THRESHOLD = 120;
 
     document.addEventListener('wheel', function (e) {
       var activeStratum = strata[currentIndex];
       var scrollable = activeStratum.scrollHeight > activeStratum.clientHeight;
       if (scrollable) {
-        var atTop = activeStratum.scrollTop <= 0;
+        var atTop    = activeStratum.scrollTop <= 0;
         var atBottom = activeStratum.scrollTop + activeStratum.clientHeight >= activeStratum.scrollHeight - 2;
-        if (e.deltaY < 0 && !atTop) return;
+        if (e.deltaY < 0 && !atTop)    return;
         if (e.deltaY > 0 && !atBottom) return;
       }
       e.preventDefault();
-      wheelAccum += e.deltaY;
+      if (transitioning) { wheelAccum = 0; return; }
+      wheelAccum += Math.max(-50, Math.min(50, e.deltaY));
       clearTimeout(wheelTimer);
-      wheelTimer = setTimeout(function () { wheelAccum = 0; }, 200);
-      if (wheelAccum > WHEEL_THRESHOLD)      { wheelAccum = 0; goTo(currentIndex + 1); }
+      wheelTimer = setTimeout(function () { wheelAccum = 0; }, 300);
+      if (wheelAccum >  WHEEL_THRESHOLD) { wheelAccum = 0; goTo(currentIndex + 1); }
       else if (wheelAccum < -WHEEL_THRESHOLD) { wheelAccum = 0; goTo(currentIndex - 1); }
     }, { passive: false });
 
