@@ -639,15 +639,12 @@
       height: 100%;
     }
 
-    .wave-layer-1 {
-      animation: waveScroll 10s linear infinite;
-      opacity: 0.45;
-    }
-
-    .wave-layer-2 {
-      animation: waveScroll 7s linear infinite reverse;
-      opacity: 1;
-    }
+    .wave-layer-1 { animation: waveScroll 14s linear infinite;         opacity: 0.45; }
+    .wave-layer-2 { animation: waveScroll 10s linear infinite reverse; opacity: 0.35; }
+    .wave-layer-3 { animation: waveScroll 8s  linear infinite;         opacity: 0.30; }
+    .wave-layer-4 { animation: waveScroll 12s linear infinite reverse; opacity: 0.60; }
+    .wave-layer-5 { animation: waveScroll 9s  linear infinite;         opacity: 0.35; }
+    .wave-layer-6 { animation: waveScroll 7s  linear infinite reverse; opacity: 0.80; }
 
     @keyframes waveScroll {
       from { transform: translateX(0); }
@@ -1598,10 +1595,22 @@
 
     <div class="hero-wave" aria-hidden="true">
       <svg class="wave-layer-1" viewBox="0 0 1600 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 45 C200 5, 400 90, 800 38 C1000 4, 1200 85, 1600 38 L1600 110 L0 110 Z" fill="#4a88bb"/>
+        <path d="M0 45 C200 5, 400 90, 800 38 C1000 4, 1200 85, 1600 38 L1600 110 L0 110 Z" fill="#2a6a6e"/>
       </svg>
       <svg class="wave-layer-2" viewBox="0 0 1600 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 62 C200 20, 400 98, 800 55 C1000 18, 1200 92, 1600 55 L1600 110 L0 110 Z" fill="#4a88bb"/>
+        <path d="M0 53 C200 14, 400 96, 800 48 C1000 10, 1200 90, 1600 48 L1600 110 L0 110 Z" fill="#35807a"/>
+      </svg>
+      <svg class="wave-layer-3" viewBox="0 0 1600 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 61 C200 22, 400 100, 800 58 C1000 18, 1200 94, 1600 58 L1600 110 L0 110 Z" fill="#4dbead"/>
+      </svg>
+      <svg class="wave-layer-4" viewBox="0 0 1600 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 69 C200 30, 400 104, 800 66 C1000 26, 1200 98, 1600 66 L1600 110 L0 110 Z" fill="#256060"/>
+      </svg>
+      <svg class="wave-layer-5" viewBox="0 0 1600 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 77 C200 40, 400 108, 800 74 C1000 36, 1200 102, 1600 74 L1600 110 L0 110 Z" fill="#4dbead"/>
+      </svg>
+      <svg class="wave-layer-6" viewBox="0 0 1600 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 85 C200 50, 400 110, 800 82 C1000 46, 1200 108, 1600 82 L1600 110 L0 110 Z" fill="#122224"/>
       </svg>
     </div>
   </section>
