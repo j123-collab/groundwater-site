@@ -614,34 +614,17 @@
     /* ── WAVES ── */
     .hero-wave {
       position: absolute;
-      bottom: 0px; left: 0; right: 0;
-      height: 110px;
-      overflow: hidden;
+      bottom: 0; left: 0; right: 0;
+      height: 150px;
       pointer-events: none;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
     }
 
-    .hero-wave svg {
-      position: absolute;
-      bottom: -1px;
-      width: 200%;
+    #hero-wave-canvas {
+      display: block;
+      width: 100%;
       height: 100%;
-    }
-
-    .wave-layer-1 {
-      animation: waveScroll 10s linear infinite;
-      opacity: 0.45;
-    }
-
-    .wave-layer-2 {
-      animation: waveScroll 7s linear infinite reverse;
-      opacity: 1;
-    }
-
-    @keyframes waveScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
     }
 
     /* ── GALLERY MASONRY ── */
@@ -833,12 +816,7 @@
     </div>
 
     <div class="hero-wave" aria-hidden="true">
-      <svg class="wave-layer-1" viewBox="0 0 1600 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 45 C200 5, 400 90, 800 38 C1000 4, 1200 85, 1600 38 L1600 110 L0 110 Z" fill="#4a88bb"/>
-      </svg>
-      <svg class="wave-layer-2" viewBox="0 0 1600 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 62 C200 20, 400 98, 800 55 C1000 18, 1200 92, 1600 55 L1600 110 L0 110 Z" fill="#4a88bb"/>
-      </svg>
+      <canvas id="hero-wave-canvas"></canvas>
     </div>
   </section>
 
@@ -1200,6 +1178,66 @@
         const progress = Math.min(1, Math.max(0, (wh * 0.5 - rect.top) / (rect.bottom - rect.top)));
         fill.style.height = (progress * 100) + '%';
       }, { passive: true });
+    })();
+
+    /* ── WAVE CANVAS ── */
+    (function initWaves() {
+      const canvas = document.getElementById('hero-wave-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+
+      /* Four layers: back → front. Each has its own frequency, amplitude, speed, phase offset. */
+      const LAYERS = [
+        { alpha: 0.22, amp: 30, freq: 0.60, speed: 0.00018, phase: 0.0,  base: 0.38 },
+        { alpha: 0.42, amp: 24, freq: 0.95, speed: 0.00030, phase: 2.20, base: 0.50 },
+        { alpha: 0.65, amp: 18, freq: 0.75, speed: 0.00044, phase: 1.10, base: 0.62 },
+        { alpha: 1.00, amp: 13, freq: 1.15, speed: 0.00058, phase: 3.60, base: 0.74 },
+      ];
+      const COLOR = '#4a88bb';
+
+      function resize() {
+        canvas.width  = Math.round(canvas.offsetWidth  * dpr);
+        canvas.height = Math.round(canvas.offsetHeight * dpr);
+      }
+
+      function draw(ts) {
+        const W = canvas.width;
+        const H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+
+        LAYERS.forEach(function(l) {
+          const yBase = H * l.base;
+          const amp   = l.amp * dpr;
+          const step  = dpr > 1 ? 3 : 2;
+
+          ctx.globalAlpha = l.alpha;
+          ctx.fillStyle   = COLOR;
+          ctx.beginPath();
+
+          for (var x = 0; x <= W; x += step) {
+            var y = yBase + Math.sin(x / W * Math.PI * 2 * l.freq + ts * l.speed + l.phase) * amp;
+            x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+
+          ctx.lineTo(W, H);
+          ctx.lineTo(0, H);
+          ctx.closePath();
+          ctx.fill();
+        });
+
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(draw);
+      }
+
+      var resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resize, 100);
+      });
+
+      resize();
+      requestAnimationFrame(draw);
     })();
   </script>
 
