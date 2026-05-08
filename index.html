@@ -1989,6 +1989,15 @@
 </div><!-- /#desktop-root -->
 
 <script>
+// Reload when crossing the mobile/desktop boundary so JS re-initialises correctly
+(function () {
+  var wasDesktop = window.innerWidth >= 768;
+  window.addEventListener('resize', function () {
+    var isDesktop = window.innerWidth >= 768;
+    if (isDesktop !== wasDesktop) window.location.reload();
+  });
+})();
+
 if (window.innerWidth < 768) {
   /* ═══════════════════════════════════════
      MOBILE JS
