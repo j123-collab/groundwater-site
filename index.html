@@ -12,7 +12,7 @@
   <style>
     /* ─── ROOT SWITCHER ─── */
     #desktop-root { display: none; }
-    @media (min-width: 1024px) {
+    @media (min-width: 768px) {
       #mobile-root  { display: none !important; }
       #desktop-root { display: block; }
     }
@@ -1989,7 +1989,7 @@
 </div><!-- /#desktop-root -->
 
 <script>
-if (window.innerWidth < 1024) {
+if (window.innerWidth < 768) {
   /* ═══════════════════════════════════════
      MOBILE JS
      ═══════════════════════════════════════ */
@@ -2209,7 +2209,7 @@ if (window.innerWidth < 1024) {
   })();
 }
 
-if (window.innerWidth >= 1024) {
+if (window.innerWidth >= 768) {
   /* ═══════════════════════════════════════
      DESKTOP JS
      ═══════════════════════════════════════ */
