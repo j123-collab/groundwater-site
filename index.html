@@ -15,11 +15,9 @@
       /* colours */
       --black:        #0d0d0d;
       --white:        #ffffff;
-      --off-white:    #f5f5f0;
       --accent:       #1a6b5a;
       --accent-light: #2a9d7f;
       --mid-grey:     #6b7280;
-      --light-grey:   #e5e7eb;
       --rust:         #e0612e;
       --clay:         #e8b070;
       --green-glow:   #4ade80;
@@ -189,21 +187,6 @@
       flex-shrink: 0;
     }
 
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(52px, 13vw, 80px);
-      font-weight: 400;
-      line-height: 1.0;
-      letter-spacing: 3px;
-      margin-bottom: var(--space-md);
-      max-width: 600px;
-    }
-
-    .hero-title em {
-      font-style: normal;
-      color: var(--accent-light);
-    }
-
     .hero-info {
       display: flex;
       flex-direction: column;
@@ -275,43 +258,6 @@
     .lang-btn:not(.active):hover {
       background: rgba(255,255,255,0.08);
       color: var(--white);
-    }
-
-    /* ── HERO COMPANY NAME ── */
-    .hero-company {
-      font-size: var(--text-xl);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--white);
-      margin-bottom: var(--space-sm);
-    }
-
-    .hero-company span { color: var(--accent-light); }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: var(--space-lg);
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-xs);
-      opacity: 0.4;
-    }
-
-    .scroll-hint span { font-size: var(--text-xs); letter-spacing: 1.4px; text-transform: uppercase; color: var(--white); }
-
-    .scroll-arrow {
-      width: 1px;
-      height: 32px;
-      background: linear-gradient(to bottom, transparent, var(--white));
-      animation: scrollPulse 1.8s ease-in-out infinite;
-    }
-
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
-      50% { opacity: 1; transform: scaleY(1); }
     }
 
     /* ── OCEAN DEPTH GRADIENT ── */
@@ -403,46 +349,6 @@
     }
 
     .about-para { margin-bottom: var(--space-md); }
-
-    .about-subheading {
-      font-size: var(--text-lg);
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: -0.3px;
-      margin-top: var(--space-xl);
-      margin-bottom: var(--space-md);
-    }
-
-    .fact-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-xs);
-      margin-top: var(--space-lg);
-      margin-bottom: var(--space-xl);
-    }
-
-    .fact-chip {
-      font-size: var(--text-xs);
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.9);
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 20px;
-      padding: 6px 14px;
-    }
-
-    /* ── HUD STRIP ── */
-    .hud-strip {
-      font-family: 'Courier New', monospace;
-      font-size: var(--text-xs);
-      color: rgba(0,0,0,0.28);
-      letter-spacing: 1.2px;
-      text-align: center;
-      text-transform: uppercase;
-      margin-bottom: var(--space-xs);
-    }
 
     /* ── TRUST STRIP ── */
     .trust-strip {
@@ -542,79 +448,6 @@
 
     .depth-label-aq { color: rgba(65,105,225,0.75); }
 
-    .pillars {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      background: rgba(0,0,0,0.15);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .pillar {
-      background: var(--white);
-      padding: 28px var(--space-md);
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .pillar-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--black);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .pillar-icon svg { width: 20px; height: 20px; }
-
-    .pillar-title {
-      font-size: var(--text-md);
-      font-weight: 700;
-      margin-bottom: 6px;
-      letter-spacing: -0.2px;
-    }
-
-    .pillar-text {
-      font-size: var(--text-base);
-      line-height: 1.6;
-      color: var(--mid-grey);
-    }
-
-    /* ── STATS STRIP ── */
-    .stats-strip {
-      background: transparent;
-      color: var(--white);
-      padding: var(--space-2xl) var(--space-md);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-lg);
-    }
-
-    .stat { text-align: center; }
-
-    .stat-number {
-      font-size: 48px;
-      font-weight: 800;
-      letter-spacing: -2px;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: var(--space-sm);
-    }
-
-    .stat-label {
-      font-size: 13px;
-      letter-spacing: 0.8px;
-      color: rgba(255,255,255,0.55);
-      text-transform: uppercase;
-    }
-
     /* ── CONTACT ── */
     #contact {
       padding: var(--section-pad);
@@ -625,7 +458,7 @@
 
     #contact .section-label { color: rgba(255,255,255,0.6); }
     #contact .section-title { color: var(--white); }
-    #contact .section-body  { color: rgba(255,255,255,0.8); }
+    #contact .section-body  { color: rgba(255,255,255,0.8); margin-bottom: 0; }
 
     .contact-grid {
       display: flex;
@@ -744,7 +577,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--space-xs);
+      gap: 6px;
       text-align: center;
     }
 
@@ -761,6 +594,21 @@
     footer p {
       font-size: var(--text-sm);
       color: rgba(255,255,255,0.4);
+    }
+
+    .footer-legal {
+      margin-top: 0;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-legal p {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.3px;
     }
 
     /* ── WAVES ── */
@@ -885,20 +733,6 @@
 
     /* ── TABLET+ ── */
     @media (min-width: 600px) {
-      .stats-strip {
-        flex-direction: row;
-        justify-content: space-around;
-      }
-
-      .pillars {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-
-      .pillar {
-        flex: 1 1 280px;
-      }
-
       .contact-grid {
         flex-direction: row;
         align-items: flex-start;
@@ -1055,7 +889,7 @@
       <div class="contact-intro">
         <p class="section-label" data-i18n="contact.label">Contact</p>
         <h2 class="section-title" data-i18n="contact.title">Let's talk about your requirements</h2>
-        <p class="section-body" style="margin-bottom: 0;" data-i18n="contact.body">Whether you have an active requirement or want to discuss a future project, our team is ready to help.</p>
+        <p class="section-body" data-i18n="contact.body">Whether you have an active requirement or want to discuss a future project, our team is ready to help.</p>
 
         <div class="contact-detail">
           <div class="contact-item">
@@ -1134,9 +968,21 @@
     <div class="footer-logo">Maxilium <span>Groundwater</span></div>
     <p data-i18n="footer.copy">© 2026 Maxilium Groundwater. All rights reserved.</p>
     <p data-i18n="footer.tag">Specialist Military Groundwater Services</p>
+    <div class="footer-legal">
+      <p>Org.nr: 195805068250 &nbsp;·&nbsp; F-skatt 2026</p>
+      <p>Ölmevägen 17, SE-123 32 Farsta, Stockholm</p>
+      <p>Filial: Övre Hantverksgatan 32A, Östersund</p>
+    </div>
   </footer>
 
   </div><!-- /ocean-depth -->
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">&#x2715;</button>
+    <button class="lightbox-prev" id="lightbox-prev">&#8592;</button>
+    <img id="lightbox-img" src="" alt="">
+    <button class="lightbox-next" id="lightbox-next">&#8594;</button>
+  </div>
 
   <div class="lang-toggle">
     <button class="lang-btn active" data-lang="en">EN</button>
@@ -1153,25 +999,14 @@
         'hero.title': 'Water, secured.<br><em>Wherever</em> it matters.',
         'hero.sub': 'Strategic Groundwater Reserves — Scandinavia',
         'hero.sub2': 'Development and action plan for securing groundwater resources — for the establishment of groundwater sources 2025–2030.',
-        'scroll': 'Scroll',
         'about.label': 'About us',
         'about.title': 'Built for the most<br>demanding environments',
-        'about.body': 'Maxilium Groundwater delivers trusted groundwater intelligence to defence organisations operating in remote, austere, and contested environments. Our teams combine military expertise with cutting-edge hydrogeological science.',
         'about.p1': 'My name is Lars Falk. My colleagues and I have, over more than three decades, developed a programme and concept for locating and evaluating suitable land areas to establish wells for producing and securing drinking water from groundwater sources in Scandinavia.',
         'about.p2': 'Today, our water resources are a highly topical issue, and public awareness of the importance of having access to clean water cannot be taken for granted.',
         'about.p3': 'To supply 100,000 people with approximately 3 litres of drinking water per day requires access to an extraction of 300,000 litres per day — or 54,750,000 litres per year — from a secured well or source.',
         'about.p4': 'Over the years, we have continuously updated our development and action plan with strategic methods to secure groundwater sources for the target groups we were in dialogue with as far back as the 1990s. At that time, there was no need to develop private wells within a classified groundwater source.',
         'about.p5': 'Today, the global situation is entirely different. Our chosen target groups are the Armed Forces, Police and Rescue Services, MCF, Municipalities, and Institutions.',
         'about.p6': 'We have chosen to place a high level of confidentiality on our groundwater development and action plan. We present no details on our website — this is communicated verbally upon request, during a physical meeting.',
-        'p1.title': 'Rapid Deployment',
-        'p1.text': 'Assessment teams mobilised in 72 hours to any operational theatre, with full equipment sets ready for austere conditions.',
-        'p2.title': 'Cleared Personnel',
-        'p2.text': 'All staff hold appropriate security clearances. We operate within established defence frameworks and procurement routes.',
-        'p3.title': 'Precision Analysis',
-        'p3.text': 'Advanced hydrogeological modelling and real-time monitoring to inform critical infrastructure and supply chain decisions.',
-        'stat1': 'Years experience',
-        'stat2': 'Countries operated',
-        'stat3': 'Assessments completed',
         'contact.label': 'Contact',
         'contact.title': "Let's talk about your requirements",
         'contact.body': 'If interested, please fill in your contact details in our form and we will get back to you.',
@@ -1204,25 +1039,14 @@
         'hero.title': 'Vatten, säkrat.<br><em>Var det än</em> behövs.',
         'hero.sub': 'Strategiska grundvattenreserver — Skandinavien',
         'hero.sub2': 'Utvecklings- och handlingsplan för säkerställande av grundvattenresurser — för etablering av grundvattentäkter år 2025–2030.',
-        'scroll': 'Scrolla',
         'about.label': 'Om oss',
         'about.title': 'Byggd för de mest<br>krävande miljöerna',
-        'about.body': 'Maxilium Groundwater levererar tillförlitlig grundvattenskompetens till försvarsorganisationer som verkar i avlägsna, tuffa och omstridda miljöer. Våra team kombinerar militär expertis med den senaste hydrogeologiska vetenskapen.',
         'about.p1': 'Mitt namn är Lars Falk. Jag och mina kollegor har under drygt tre decennier utvecklat ett program och ett koncept för att lokalisera och utvärdera ett lämpligt markområde för att etablera brunnar för att producera och säkerställa dricksvatten från grundvattentäkter i Skandinavien.',
         'about.p2': 'Idag är våra vattenresurser högaktuella och den allmänna kunskapen om vikten av att ha tillgång till rent vatten är inte en självklarhet.',
         'about.p3': 'För att försörja 100 000 personer med ca 3 liter dricksvatten per dag krävs tillgång till ett uttag av 300 000 liter per dygn eller 54 750 000 liter per år från en säkerställd brunn/täkt.',
         'about.p4': 'Vi har löpande under åren uppdaterat vår utvecklings- och handlingsplan med strategiska metoder för att säkerställa grundvattentäkter för de målgrupper vi hade en dialog med redan under 90-talet. Vid den tidpunkten fanns inte behovet av att utveckla egna brunnar i en sekretessklassad grundvattentäkt.',
         'about.p5': 'Idag är världsläget helt annorlunda och vårt val av målgrupper är Försvarsmakten, Polis- och Räddningstjänst, MCF, Kommuner och Institutioner.',
         'about.p6': 'Idag har vi valt att lägga en hög sekretess på vår utvecklings- och handlingsplan för grundvatten. Vi presenterar inga detaljer på vår hemsida utan det sker verbalt efter förfrågan under ett fysiskt möte.',
-        'p1.title': 'Snabb utryckning',
-        'p1.text': 'Bedömningsteam mobiliserade inom 72 timmar till valfritt operativt område, med full utrustning redo för tuffa förhållanden.',
-        'p2.title': 'Säkerhetsgodkänd personal',
-        'p2.text': 'All personal innehar lämpliga säkerhetsgodkännanden. Vi verkar inom etablerade försvarsramverk och upphandlingsvägar.',
-        'p3.title': 'Precisionsanalys',
-        'p3.text': 'Avancerad hydrogeologisk modellering och realtidsövervakning för beslut om kritisk infrastruktur och försörjningskedjor.',
-        'stat1': 'Års erfarenhet',
-        'stat2': 'Länder verksamma',
-        'stat3': 'Genomförda uppdrag',
         'contact.label': 'Kontakt',
         'contact.title': 'Låt oss prata om era behov',
         'contact.body': 'Vid intresse fyll i dina kontaktuppgifter i vårt formulär så tar vi kontakt med er.',
@@ -1378,13 +1202,6 @@
       }, { passive: true });
     })();
   </script>
-
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightbox-close">&#x2715;</button>
-    <button class="lightbox-prev" id="lightbox-prev">&#8592;</button>
-    <img id="lightbox-img" src="" alt="">
-    <button class="lightbox-next" id="lightbox-next">&#8594;</button>
-  </div>
 
   <div class="depth-meter" aria-hidden="true">
     <div class="depth-meter-track">
