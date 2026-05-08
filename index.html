@@ -839,7 +839,7 @@
     #desktop-root .stratum__content {
       position: relative;
       z-index: 1;
-      max-width: 1060px;
+      max-width: clamp(900px, 85vw, 1280px);
       margin: 0 auto;
       padding: clamp(40px, 6vw, 80px) clamp(16px, 2.5vw, 32px) clamp(80px, 10vw, 140px) clamp(44px, 5vw, 72px);
     }
@@ -945,7 +945,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 40px;
+      margin-bottom: clamp(24px, 3vw, 48px);
       flex-wrap: wrap;
     }
 
@@ -1120,7 +1120,7 @@
       text-transform: uppercase;
       color: var(--muted);
       background: transparent;
-      padding: 12px 24px;
+      padding: clamp(10px, 1.2vw, 14px) clamp(16px, 2vw, 28px);
       border: 1px solid rgba(74, 118, 178, 0.3);
       border-radius: 4px;
       cursor: pointer;
@@ -1213,26 +1213,26 @@
     /* ---------- About ---------- */
     #desktop-root .about-grid {
       display: grid;
-      grid-template-columns: 1fr 200px;
-      gap: 40px;
+      grid-template-columns: 1fr clamp(160px, 16vw, 220px);
+      gap: clamp(24px, 3vw, 48px);
       margin-bottom: 36px;
     }
 
     #desktop-root .about-text p { font-size: 0.9rem; }
 
-    #desktop-root .about-sidebar { display: flex; flex-direction: column; gap: 16px; }
+    #desktop-root .about-sidebar { display: flex; flex-direction: column; gap: clamp(12px, 1.5vw, 20px); }
 
     #desktop-root .fact-card {
       background: rgba(10, 24, 46, 0.5);
       border: 1px solid rgba(74, 118, 178, 0.12);
       border-radius: 6px;
-      padding: 16px;
+      padding: clamp(12px, 1.5vw, 20px);
     }
 
     #desktop-root .fact-card__value {
       display: block;
       font-family: var(--font-mono);
-      font-size: 1.8rem;
+      font-size: clamp(1.4rem, 1.8vw, 2rem);
       font-weight: 700;
       color: var(--clay);
       line-height: 1;
@@ -1241,7 +1241,7 @@
 
     #desktop-root .fact-card__label {
       font-family: var(--font-mono);
-      font-size: 0.65rem;
+      font-size: clamp(0.6rem, 0.7vw, 0.72rem);
       color: var(--muted);
       letter-spacing: 0.05em;
       line-height: 1.4;
@@ -1352,18 +1352,18 @@
       gap: 20px;
     }
     #desktop-root .d-contact-right {
-      flex: 0 0 260px;
-      padding-top: 72px;
+      flex: 0 0 clamp(200px, 20vw, 300px);
+      padding-top: clamp(40px, 5vw, 80px);
     }
     #desktop-root .d-contact-body {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: clamp(0.85rem, 1vw, 0.95rem);
       line-height: 1.65;
     }
     #desktop-root .d-contact-form {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: clamp(12px, 1.5vw, 18px);
     }
     #desktop-root .d-contact-form label {
       font-family: var(--font-mono);
@@ -1461,6 +1461,9 @@
       #desktop-root .about-sidebar .fact-card { flex: 1; min-width: 120px; }
 
       #desktop-root .form-row { grid-template-columns: 1fr; }
+
+      #desktop-root .d-contact-grid { flex-direction: column; }
+      #desktop-root .d-contact-right { flex: 1 1 auto; padding-top: 0; }
 
       #desktop-root .site-footer { padding-left: 0; }
     }
