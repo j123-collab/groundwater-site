@@ -777,10 +777,15 @@
       --font-mono:    'JetBrains Mono', 'Courier New', monospace;
       font-size: 16px;
       font-family: var(--font-body);
-      background: var(--surface);
+      background: var(--abyss);
       color: var(--light);
       line-height: 1.7;
       overscroll-behavior: none;
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      height: 100vh;
+      width: 100%;
     }
 
     /* ---------- Depth Markers ---------- */
@@ -821,18 +826,35 @@
       opacity: 0.6;
     }
 
+    #desktop-root .depth-mark span.pop {
+      animation: d-depth-pop 0.25s ease-out;
+    }
+
+    @keyframes d-depth-pop {
+      0%   { transform: scale(1); opacity: 0.6; }
+      35%  { transform: scale(1.8); opacity: 1; color: var(--light); }
+      100% { transform: scale(1); opacity: 0.6; }
+    }
+
     /* ---------- Strata ---------- */
     #desktop-root .stratum {
-      position: relative;
+      position: absolute;
+      inset: 0;
       width: 100%;
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease-out;
     }
 
-    #desktop-root .stratum--surface {
-      min-height: 100vh;
-      min-height: 100svh;
+    #desktop-root .stratum.active {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     #desktop-root .stratum__content {
@@ -840,7 +862,15 @@
       z-index: 1;
       max-width: 1060px;
       margin: 0 auto;
-      padding: 80px 32px 180px 72px;
+      padding: 80px 32px 140px 72px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s ease-out 0.15s, transform 0.5s ease-out 0.15s;
+    }
+
+    #desktop-root .stratum.active .stratum__content {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ---------- Fixed Wave Overlay ---------- */
@@ -872,8 +902,8 @@
       position: absolute;
       bottom: -20px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       animation: d-bubble-rise linear infinite;
       opacity: 0;
     }
@@ -2284,36 +2314,122 @@ if (window.innerWidth >= 1024) {
     var desktopRoot = document.getElementById('desktop-root');
     var currentLang = 'en';
     var langButtons = desktopRoot.querySelectorAll('#langToggle .lang-btn');
-    var contactForm = document.getElementById('contactForm');
-    var successBox = document.getElementById('formSuccess');
+    var contactForm = desktopRoot.querySelector('#contactForm');
+    var successBox = desktopRoot.querySelector('#formSuccess');
 
-    // ---- Dot navigation ----
-    var dots = Array.from(desktopRoot.querySelectorAll('.nav-dot'));
+    // ---- Section Navigation (snap-scroll) ----
     var strata = Array.from(desktopRoot.querySelectorAll('.stratum'));
+    var dots = Array.from(desktopRoot.querySelectorAll('.nav-dot'));
+    var depthMarks = Array.from(desktopRoot.querySelectorAll('.depth-mark'));
+    var currentIndex = 0;
+    var transitioning = false;
+
+    var depthValues = [
+      [0, 5, 10, 15, 20],
+      [20, 40, 60, 80, 100],
+      [50, 100, 150, 200, 250]
+    ];
+    var currentDepths = [0, 5, 10, 15, 20];
+    var depthAnims = [null, null, null, null, null];
+
+    function animateMarker(i, from, to, delay) {
+      setTimeout(function () {
+        if (depthAnims[i]) cancelAnimationFrame(depthAnims[i]);
+        var span = depthMarks[i].querySelector('span');
+        var start = null;
+        var duration = 400;
+        function tick(ts) {
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / duration, 1);
+          var ease = 1 - Math.pow(1 - p, 3);
+          var val = Math.round(from + (to - from) * ease);
+          span.textContent = val + 'm';
+          currentDepths[i] = val;
+          if (p < 1) {
+            depthAnims[i] = requestAnimationFrame(tick);
+          } else {
+            span.classList.remove('pop');
+            void span.offsetWidth;
+            span.classList.add('pop');
+          }
+        }
+        depthAnims[i] = requestAnimationFrame(tick);
+      }, delay);
+    }
+
+    function updateDepthMarkers(index, goingDown) {
+      var target = depthValues[index];
+      for (var i = 0; i < depthMarks.length; i++) {
+        var delay = goingDown ? i * 40 : (depthMarks.length - 1 - i) * 40;
+        animateMarker(i, currentDepths[i], target[i], delay);
+      }
+    }
+
+    function goTo(index) {
+      if (index === currentIndex || index < 0 || index >= strata.length || transitioning) return;
+      transitioning = true;
+      var goingDown = index > currentIndex;
+
+      strata[currentIndex].classList.remove('active');
+      dots[currentIndex].classList.remove('active');
+
+      currentIndex = index;
+      strata[currentIndex].classList.add('active');
+      dots[currentIndex].classList.add('active');
+
+      updateDepthMarkers(index, goingDown);
+      waveTurbulence = 1.0;
+
+      setTimeout(function () { transitioning = false; }, 600);
+    }
+
+    strata[0].classList.add('active');
+    dots[0].classList.add('active');
+    updateDepthMarkers(0, true);
+
+    // Wheel navigation
+    var wheelAccum = 0;
+    var wheelTimer = null;
+    var WHEEL_THRESHOLD = 80;
+
+    document.addEventListener('wheel', function (e) {
+      var activeStratum = strata[currentIndex];
+      var scrollable = activeStratum.scrollHeight > activeStratum.clientHeight;
+      if (scrollable) {
+        var atTop = activeStratum.scrollTop <= 0;
+        var atBottom = activeStratum.scrollTop + activeStratum.clientHeight >= activeStratum.scrollHeight - 2;
+        if (e.deltaY < 0 && !atTop) return;
+        if (e.deltaY > 0 && !atBottom) return;
+      }
+      e.preventDefault();
+      wheelAccum += e.deltaY;
+      clearTimeout(wheelTimer);
+      wheelTimer = setTimeout(function () { wheelAccum = 0; }, 200);
+      if (wheelAccum > WHEEL_THRESHOLD) { wheelAccum = 0; goTo(currentIndex + 1); }
+      else if (wheelAccum < -WHEEL_THRESHOLD) { wheelAccum = 0; goTo(currentIndex - 1); }
+    }, { passive: false });
 
     dots.forEach(function (dot) {
       dot.addEventListener('click', function () {
-        var index = parseInt(dot.getAttribute('data-index'), 10);
-        if (strata[index]) strata[index].scrollIntoView({ behavior: 'smooth' });
+        goTo(parseInt(dot.getAttribute('data-index'), 10));
       });
     });
 
-    window.addEventListener('scroll', function () {
-      var mid = window.scrollY + window.innerHeight * 0.5;
-      var closest = 0;
-      var closestDist = Infinity;
-      strata.forEach(function (el, i) {
-        var dist = Math.abs(el.offsetTop + el.offsetHeight * 0.5 - mid);
-        if (dist < closestDist) { closestDist = dist; closest = i; }
-      });
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === closest); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); goTo(currentIndex + 1); }
+      else if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); goTo(currentIndex - 1); }
+    });
+
+    var touchStartY = 0;
+    document.addEventListener('touchstart', function (e) { touchStartY = e.touches[0].clientY; }, { passive: true });
+    document.addEventListener('touchend', function (e) {
+      var diff = touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(diff) > 60) goTo(currentIndex + (diff > 0 ? 1 : -1));
     }, { passive: true });
 
-    // Hero "About" / "Contact" buttons
     desktopRoot.querySelectorAll('[data-goto]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var index = parseInt(btn.getAttribute('data-goto'), 10);
-        if (strata[index]) strata[index].scrollIntoView({ behavior: 'smooth' });
+        goTo(parseInt(btn.getAttribute('data-goto'), 10));
       });
     });
 
@@ -2446,6 +2562,7 @@ if (window.innerWidth >= 1024) {
 
     var mouseX = 0.5;
     var smoothX = 0.5;
+    var waveTurbulence = 0;
     var NUM_POINTS = 24;
     var W = window.innerWidth;
     var waveSvg = waveOverlay ? waveOverlay.querySelector('svg') : null;
@@ -2474,6 +2591,10 @@ if (window.innerWidth >= 1024) {
           + Math.sin(time * layer.speed * 0.7 + t * Math.PI * 10 + layer.phase * 1.5) * layer.amp * 0.5 * chop
           + Math.sin(time * layer.speed * 1.3 + t * Math.PI * 14 + layer.phase * 0.8) * layer.amp * 0.35 * chop
           + Math.sin(time * layer.speed * 1.8 + t * Math.PI * 20 + layer.phase * 2) * layer.amp * 0.15 * chop;
+        if (waveTurbulence > 0.01) {
+          y += Math.sin(time * 6 + t * 15 + layer.phase) * waveTurbulence * 8;
+          y += Math.cos(time * 9 + t * 10) * waveTurbulence * 5;
+        }
         var dist = t - smoothX;
         var influence = Math.exp(-dist * dist * 12);
         y -= influence * layer.lift;
@@ -2504,6 +2625,7 @@ if (window.innerWidth >= 1024) {
     function animateWaves(time) {
       var t = time * 0.001;
       smoothX = lerp(smoothX, mouseX, 0.06);
+      if (waveTurbulence > 0.01) waveTurbulence *= 0.97;
       for (var i = 0; i < wavePaths.length; i++) {
         if (wavePaths[i]) {
           var pts = getPoints(layers[i], t);
