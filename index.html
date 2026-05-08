@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="theme-color" content="#122224">
+  <meta name="description" content="Maxilium Groundwater — Strategic groundwater reserve development for defence, government and critical infrastructure across Scandinavia.">
+  <meta property="og:title" content="Maxilium Groundwater">
+  <meta property="og:description" content="Strategic Groundwater Reserves — Scandinavia">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://j123-collab.github.io/groundwater-site/">
+  <link rel="canonical" href="https://j123-collab.github.io/groundwater-site/">
   <title>Maxilium Groundwater — Strategic Groundwater Reserves</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -760,6 +766,8 @@
       --mid:        #191f28;
       --abyss:      #131920;
       --rust:       #e0612e;
+      --rust-hover: #b24e2c;
+      --success-green: #2ea87a;
       --clay:       #e8b070;
       --slate:      #3d72a8;
       --light:      #ffffff;
@@ -1048,7 +1056,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #2ea87a;
+      background: var(--success-green);
       animation: d-pulse-dot 2s ease-in-out infinite;
     }
 
@@ -1253,27 +1261,6 @@
     }
 
     /* ---------- Contact Form ---------- */
-    #desktop-root .contact-form { max-width: 700px; }
-
-    #desktop-root .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    #desktop-root .form-group { display: flex; flex-direction: column; gap: 6px; }
-    #desktop-root .form-group--full { margin-bottom: 20px; }
-
-    #desktop-root .form-label {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     #desktop-root .form-input {
       font-family: var(--font-body);
       font-size: 0.9rem;
@@ -1301,23 +1288,6 @@
 
     #desktop-root .form-error.visible { display: block; }
 
-    #desktop-root .form-submit {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #fff;
-      background: var(--rust);
-      border: none;
-      border-radius: 4px;
-      padding: 14px 32px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    #desktop-root .form-submit:hover { background: #b24e2c; }
-
     #desktop-root .form-success {
       display: none;
       margin-top: 24px;
@@ -1332,7 +1302,7 @@
     #desktop-root .form-success h3 {
       font-family: var(--font-mono);
       font-size: 0.9rem;
-      color: #2ea87a;
+      color: var(--success-green);
       margin-bottom: 6px;
     }
 
@@ -1388,7 +1358,7 @@
       transition: background 0.2s;
       align-self: flex-start;
     }
-    #desktop-root .d-contact-form .btn-submit:hover { background: #b24e2c; }
+    #desktop-root .d-contact-form .btn-submit:hover { background: var(--rust-hover); }
     #desktop-root .d-contact-form .trust-strip { flex-wrap: wrap; }
     #desktop-root .d-company-card {
       margin-top: 28px;
@@ -1459,8 +1429,6 @@
       }
 
       #desktop-root .about-sidebar .fact-card { flex: 1; min-width: 120px; }
-
-      #desktop-root .form-row { grid-template-columns: 1fr; }
 
       #desktop-root .d-contact-grid { flex-direction: column; }
       #desktop-root .d-contact-right { flex: 1 1 auto; padding-top: 0; }
@@ -1703,12 +1671,12 @@
   <!-- GALLERY -->
   <section class="gallery-section">
     <div class="gallery-grid">
-      <div class="gallery-item reveal"><img src="images/Untitled.png" alt=""></div>
-      <div class="gallery-item reveal"><img src="images/Untitled 1.png" alt=""></div>
-      <div class="gallery-item reveal"><img src="images/Untitled 2.png" alt=""></div>
-      <div class="gallery-item reveal"><img src="images/Untitled 3.png" alt=""></div>
-      <div class="gallery-item reveal"><img src="images/Untitled 4.png" alt=""></div>
-      <div class="gallery-item reveal"><img src="images/Untitled 5.png" alt=""></div>
+      <div class="gallery-item reveal"><img src="images/Untitled.png" alt="Groundwater survey site"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled 1.png" alt="Field operations"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled 2.png" alt="Well infrastructure"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled 3.png" alt="Groundwater assessment"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled 4.png" alt="Subsurface analysis"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled 5.png" alt="Water source development"></div>
     </div>
   </section>
 
@@ -2256,7 +2224,7 @@ if (window.innerWidth < 768) {
       activeCountry = (activeCountry + 1) % countries.length;
     }
     cycleCountry();
-    setInterval(cycleCountry, 4000);
+    var cycleTimer = setInterval(cycleCountry, 4000);
   })();
 
   const mobileForm = document.querySelector('#mobile-root form');
@@ -2286,6 +2254,7 @@ if (window.innerWidth < 768) {
   // Lightbox
   (function() {
     const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
     const lbImg    = document.getElementById('lightbox-img');
     const images   = Array.from(document.querySelectorAll('#mobile-root .gallery-item img'));
     let current = 0;
@@ -2490,7 +2459,7 @@ if (window.innerWidth >= 768) {
 
       desktopRoot.querySelectorAll('[data-i18n]').forEach(function (el) {
         var key = el.getAttribute('data-i18n');
-        if (t[key] !== undefined) el.innerHTML = t[key];
+        if (t[key] !== undefined) el.textContent = t[key];
       });
       desktopRoot.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
         var key = el.getAttribute('data-i18n-placeholder');
@@ -2562,7 +2531,7 @@ if (window.innerWidth >= 768) {
     }
     if (mapSvg) {
       cycleCountry();
-      setInterval(cycleCountry, 4000);
+      var cycleTimer = setInterval(cycleCountry, 4000);
     }
 
     // ---- Bubble Generation ----
@@ -2625,7 +2594,7 @@ if (window.innerWidth >= 768) {
 
     document.addEventListener('mousemove', function (e) {
       mouseX = e.clientX / window.innerWidth;
-    });
+    }, { passive: true });
 
     function lerp(a, b, t) { return a + (b - a) * t; }
 
