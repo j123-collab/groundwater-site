@@ -191,7 +191,7 @@
       font-weight: 600;
       letter-spacing: 1.8px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.85);
       margin-bottom: 0;
     }
 
@@ -558,9 +558,12 @@
 
     #mobile-root textarea { resize: vertical; min-height: 110px; }
 
-    #mobile-root input:focus, #mobile-root select:focus, #mobile-root textarea:focus {
+    #mobile-root input:focus, #mobile-root select:focus, #mobile-root textarea:focus,
+    #mobile-root input:focus-visible, #mobile-root select:focus-visible, #mobile-root textarea:focus-visible {
       border-color: rgba(255,255,255,0.6);
       background: rgba(255,255,255,0.18);
+      outline: 2px solid rgba(255,255,255,0.4);
+      outline-offset: 2px;
     }
 
     .btn-submit {
@@ -577,7 +580,8 @@
       margin-top: var(--space-sm);
     }
 
-    .btn-submit:hover { background: rgba(255,255,255,0.85); }
+    .btn-submit:hover  { background: rgba(255,255,255,0.85); }
+    .btn-submit:active { background: rgba(255,255,255,0.7); transform: scale(0.98); }
 
     .btn-submit.sent { background: var(--accent); color: var(--white); }
 
@@ -588,7 +592,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: var(--space-xs);
       text-align: center;
     }
 
@@ -618,7 +622,7 @@
 
     .footer-legal p {
       font-size: var(--text-xs);
-      color: rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.5);
       letter-spacing: 0.3px;
     }
 
@@ -660,14 +664,17 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: var(--space-xs);
     }
 
     .gallery-item {
       border-radius: 12px;
       overflow: hidden;
       aspect-ratio: 4/3;
+      transition: transform 0.2s ease;
     }
+
+    .gallery-item:hover { transform: scale(1.02); }
 
     .gallery-item img {
       width: 100%;
@@ -767,6 +774,7 @@
       --abyss:      #131920;
       --rust:       #e0612e;
       --rust-hover: #b24e2c;
+      --error:      #e03030;
       --success-green: #2ea87a;
       --clay:       #e8b070;
       --slate:      #3d72a8;
@@ -1066,7 +1074,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: var(--font-mono);
+      font-family: var(--font-body);
       font-size: 0.7rem;
       letter-spacing: 0.15em;
       color: var(--muted);
@@ -1114,7 +1122,7 @@
     #desktop-root .hero-meta__item { display: flex; align-items: center; gap: 6px; }
 
     #desktop-root .hero-meta__label {
-      font-family: var(--font-mono);
+      font-family: var(--font-body);
       font-size: 0.7rem;
       color: var(--muted);
       letter-spacing: 0.1em;
@@ -1242,7 +1250,7 @@
     /* ---------- About ---------- */
     #desktop-root .about-grid {
       display: grid;
-      grid-template-columns: 1fr clamp(160px, 16vw, 220px);
+      grid-template-columns: 1fr clamp(200px, 18vw, 240px);
       gap: clamp(24px, 3vw, 48px);
       margin-bottom: 36px;
     }
@@ -1294,16 +1302,17 @@
       transition: border-color 0.2s;
     }
 
-    #desktop-root .form-input::placeholder { color: var(--muted); opacity: 0.5; }
-    #desktop-root .form-input:focus { border-color: var(--slate); }
-    #desktop-root .form-input.error { border-color: var(--rust); }
+    #desktop-root .form-input::placeholder { color: var(--muted); opacity: 0.65; }
+    #desktop-root .form-input:focus,
+    #desktop-root .form-input:focus-visible { border-color: var(--slate); outline: 2px solid rgba(61,114,168,0.35); outline-offset: 2px; }
+    #desktop-root .form-input.error { border-color: var(--error); }
 
     #desktop-root .form-textarea { resize: vertical; min-height: 100px; }
 
     #desktop-root .form-error {
-      font-family: var(--font-mono);
+      font-family: var(--font-body);
       font-size: 0.65rem;
-      color: var(--rust);
+      color: var(--error);
       display: none;
     }
 
@@ -1357,7 +1366,7 @@
       gap: clamp(12px, 1.5vw, 18px);
     }
     #desktop-root .d-contact-form label {
-      font-family: var(--font-mono);
+      font-family: var(--font-body);
       font-size: 0.7rem;
       font-weight: 500;
       color: var(--muted);
@@ -1379,7 +1388,8 @@
       transition: background 0.2s;
       align-self: flex-start;
     }
-    #desktop-root .d-contact-form .btn-submit:hover { background: var(--rust-hover); }
+    #desktop-root .d-contact-form .btn-submit:hover  { background: var(--rust-hover); }
+    #desktop-root .d-contact-form .btn-submit:active { background: var(--rust-hover); transform: scale(0.98); }
     #desktop-root .d-contact-right .trust-strip { flex-wrap: wrap; margin-bottom: 20px; }
     #desktop-root .d-company-card {
       margin-top: 28px;
@@ -1394,7 +1404,7 @@
     #desktop-root .d-company-line { font-size: 0.75rem; line-height: 1.5; }
     #desktop-root .d-company-copy { color: rgba(255,255,255,0.7); font-weight: 500; }
     #desktop-root .d-company-tag  { color: rgba(255,255,255,0.45); font-style: italic; }
-    #desktop-root .d-company-legal { color: rgba(255,255,255,0.35); font-family: var(--font-mono); font-size: 0.68rem; }
+    #desktop-root .d-company-legal { color: rgba(255,255,255,0.55); font-family: var(--font-mono); font-size: 0.68rem; }
 
     /* ---------- Footer ---------- */
     #desktop-root .site-footer {
@@ -1553,6 +1563,21 @@
 
       #desktop-root .hero-nav { gap: 4px; }
       #desktop-root .hero-nav__link { font-size: 0.75rem; padding: 12px 18px; }
+    }
+
+    /* ── Reduced Motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .wave-layer-1, .wave-layer-2, .wave-layer-3,
+      .wave-layer-4, .wave-layer-5, .wave-layer-6 { animation: none; }
+      .pulse-ring, #desktop-root .pulse-ring { animation: none; }
+      .site-dot,   #desktop-root .site-dot   { animation: none; opacity: 0.9; }
+      .flow-line,  #desktop-root .flow-line   { animation: none; }
+      #mobile-root .bubbles span { animation: none; opacity: 0; }
+      #desktop-root .bubble { animation: none; display: none; }
+      .reveal { transition: none; }
+      .stratum, .stratum__content { transition-duration: 0.15s !important; }
+      .gallery-item { transition: none; }
+      .btn-submit { transition: none; }
     }
 
   </style>
