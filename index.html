@@ -122,13 +122,14 @@
 
     .hero-map svg { width: 100%; height: auto; display: block; }
 
-    .pulse-ring { animation: radar-ping 1.8s ease-out infinite; }
+    .pulse-ring { animation: radar-ping 1.8s ease-out infinite; stroke: white; }
+    .site-dot   { fill: white; }
     @keyframes radar-ping {
       0%   { r: 4;  opacity: 0.8; }
       100% { r: 26; opacity: 0;   }
     }
 
-    .site-dot { animation: dot-glow 1s ease-in-out infinite alternate; }
+    .site-dot { fill: white; animation: dot-glow 1s ease-in-out infinite alternate; }
     @keyframes dot-glow {
       0%   { opacity: 0.4; }
       100% { opacity: 1;   }
@@ -1197,14 +1198,14 @@
     }
 
     /* ---------- Map Animations (desktop) ---------- */
-    #desktop-root .pulse-ring { animation: d-radar-ping 1.8s ease-out infinite; }
+    #desktop-root .pulse-ring { animation: d-radar-ping 1.8s ease-out infinite; stroke: white; }
 
     @keyframes d-radar-ping {
       0%   { r: 4; opacity: 0.8; }
       100% { r: 26; opacity: 0; }
     }
 
-    #desktop-root .site-dot { animation: d-dot-glow 1s ease-in-out infinite alternate; }
+    #desktop-root .site-dot { fill: white; animation: d-dot-glow 1s ease-in-out infinite alternate; }
 
     @keyframes d-dot-glow {
       0%   { opacity: 0.4; }
