@@ -122,12 +122,11 @@
 
     .hero-map svg { width: 100%; height: auto; display: block; }
 
-    .pulse-ring { animation: radar-ping 2.4s ease-out infinite; stroke: white; }
+    .pulse-ring { animation: radar-ping 1.8s ease-out infinite; stroke: white; }
     .site-dot   { fill: white; }
     @keyframes radar-ping {
-      0%   { r: 4;  opacity: 0.9; }
-      55%  { opacity: 0.35; }
-      100% { r: 52; opacity: 0;   }
+      0%   { r: 4;  opacity: 0.8; }
+      100% { r: 26; opacity: 0;   }
     }
 
     .site-dot { fill: white; animation: dot-glow 1s ease-in-out infinite alternate; }
@@ -144,8 +143,9 @@
     }
 
     .country-outline,
-    .country-label { transition: all 0.8s ease-out; }
-    .country-markers { opacity: 0; transition: opacity 0.7s ease-out 0.75s; }
+    .country-label,
+    .country-markers { transition: all 0.8s ease-out; }
+    .country-markers { opacity: 0; }
 
     .map-svg.highlight-se .country-se-outline { opacity: 1; stroke: rgba(255,255,255,0.7); stroke-width: 2; fill: rgba(80,80,80,0.1); }
     .map-svg.highlight-se .country-se-label   { opacity: 1; fill: var(--clay); }
@@ -1246,12 +1246,11 @@
     }
 
     /* ---------- Map Animations (desktop) ---------- */
-    #desktop-root .pulse-ring { animation: d-radar-ping 2.4s ease-out infinite; stroke: white; }
+    #desktop-root .pulse-ring { animation: d-radar-ping 1.8s ease-out infinite; stroke: white; }
 
     @keyframes d-radar-ping {
-      0%   { r: 4; opacity: 0.9; }
-      55%  { opacity: 0.35; }
-      100% { r: 52; opacity: 0; }
+      0%   { r: 4; opacity: 0.8; }
+      100% { r: 26; opacity: 0; }
     }
 
     #desktop-root .site-dot { fill: white; animation: d-dot-glow 1s ease-in-out infinite alternate; }
@@ -1270,8 +1269,8 @@
     }
 
     /* ---------- Country Cycling (desktop) ---------- */
-    #desktop-root .country-outline, #desktop-root .country-label { transition: all 0.8s ease-out; }
-    #desktop-root .country-markers { opacity: 0; transition: opacity 0.7s ease-out 0.75s; }
+    #desktop-root .country-outline, #desktop-root .country-label, #desktop-root .country-markers { transition: all 0.8s ease-out; }
+    #desktop-root .country-markers { opacity: 0; }
 
     #desktop-root .hero-map-svg.highlight-se .country-se-outline { opacity: 1; stroke: rgba(255,255,255,0.7); stroke-width: 2; fill: rgba(80,80,80,0.1); }
     #desktop-root .hero-map-svg.highlight-se .country-se-label { opacity: 1; fill: var(--clay); }
