@@ -2024,7 +2024,7 @@
           </div>
           <nav class="hero-nav" aria-label="Desktop hero navigation">
             <button type="button" class="hero-nav__link" data-goto="1" data-i18n="navAbout">About</button>
-            <button type="button" class="hero-nav__link" data-goto="2" data-i18n="navContact">Contact</button>
+            <button type="button" class="hero-nav__link" data-goto="3" data-i18n="navContact">Contact</button>
           </nav>
         </div><!-- /.hero-text -->
       </div><!-- /.hero-columns -->
@@ -2066,7 +2066,21 @@
     </div>
   </section>
 
-  <!-- STRATUM 2: CONTACT -->
+  <!-- STRATUM 2: GALLERY -->
+  <section class="stratum stratum--gallery" id="d-gallery">
+    <div class="stratum__content d-gallery-content">
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="images/Untitled.png" alt="Groundwater survey site" width="612" height="408" loading="lazy" decoding="async"></div>
+        <div class="gallery-item"><img src="images/Untitled 1.png" alt="Field operations" width="597" height="396" loading="lazy" decoding="async"></div>
+        <div class="gallery-item"><img src="images/Untitled 2.png" alt="Well infrastructure" width="438" height="253" loading="lazy" decoding="async"></div>
+        <div class="gallery-item"><img src="images/Untitled 3.png" alt="Groundwater assessment" width="373" height="250" loading="lazy" decoding="async"></div>
+        <div class="gallery-item"><img src="images/Untitled 4.png" alt="Subsurface analysis" width="442" height="253" loading="lazy" decoding="async"></div>
+        <div class="gallery-item"><img src="images/Untitled 5.png" alt="Water source development" width="627" height="387" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRATUM 3: CONTACT -->
   <section class="stratum stratum--2" id="d-contact">
     <div class="stratum__content">
       <div class="d-contact-grid">
@@ -2153,7 +2167,8 @@
   <nav class="nav-dots" aria-label="Desktop depth navigation">
     <button type="button" class="nav-dot active" data-index="0" aria-label="Hero"></button>
     <button type="button" class="nav-dot" data-index="1" aria-label="About"></button>
-    <button type="button" class="nav-dot" data-index="2" aria-label="Contact"></button>
+    <button type="button" class="nav-dot" data-index="2" aria-label="Gallery"></button>
+    <button type="button" class="nav-dot" data-index="3" aria-label="Contact"></button>
   </nav>
 
   <!-- Fixed wave overlay -->
@@ -2379,12 +2394,18 @@ if (window.innerWidth < 768) {
     const lightbox = document.getElementById('lightbox');
     if (!lightbox) return;
     const lbImg    = document.getElementById('lightbox-img');
-    const images   = Array.from(document.querySelectorAll('#mobile-root .gallery-item img'));
+    const allImgs  = Array.from(document.querySelectorAll('.gallery-item img'));
+    const srcs     = [];
+    const seen     = new Set();
+    allImgs.forEach(function(img) {
+      if (!seen.has(img.src)) { seen.add(img.src); srcs.push(img.src); }
+    });
     let current = 0;
 
-    function open(idx) {
-      current = idx;
-      lbImg.src = images[current].src;
+    function open(src) {
+      current = srcs.indexOf(src);
+      if (current < 0) current = 0;
+      lbImg.src = srcs[current];
       lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
@@ -2395,13 +2416,13 @@ if (window.innerWidth < 768) {
     }
 
     function go(dir) {
-      current = (current + dir + images.length) % images.length;
-      lbImg.src = images[current].src;
+      current = (current + dir + srcs.length) % srcs.length;
+      lbImg.src = srcs[current];
     }
 
-    images.forEach(function(img, i) {
+    allImgs.forEach(function(img) {
       img.parentElement.style.cursor = 'pointer';
-      img.parentElement.addEventListener('click', function() { open(i); });
+      img.parentElement.addEventListener('click', function() { open(img.src); });
     });
 
     document.getElementById('lightbox-close').addEventListener('click', close);
@@ -2558,6 +2579,7 @@ if (window.innerWidth >= 768) {
     var depthValues = [
       [0,  5,  10,  15,  20],
       [20, 40,  60,  80, 100],
+      [35, 70, 105, 140, 175],
       [50, 100, 150, 200, 250]
     ];
     var currentDepths = [0, 5, 10, 15, 20];
