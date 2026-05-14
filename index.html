@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="format-detection" content="telephone=no" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
   <meta name="theme-color" content="#122224">
   <meta name="description" content="Maxilium Groundwater — Strategic groundwater reserve development for defence, government and critical infrastructure across Scandinavia.">
   <meta property="og:title" content="Maxilium Groundwater">
@@ -14,7 +14,7 @@
   <title>Maxilium Groundwater — Strategic Groundwater Reserves</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow+Condensed:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Playfair+Display:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
     /* ─── ROOT SWITCHER ─── */
     #desktop-root { display: none; }
@@ -212,6 +212,18 @@
       margin-bottom: var(--space-md);
     }
 
+    .mobile-hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      font-weight: 400;
+      line-height: 0.95;
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 2px;
+    }
+
+    .mobile-hero-title span { color: var(--rust); }
+
     .hero-sub {
       font-size: var(--text-md);
       font-weight: 700;
@@ -361,6 +373,12 @@
     }
 
     .about-para { margin-bottom: var(--space-md); }
+    .about-lead {
+      font-style: italic;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: var(--space-md);
+      letter-spacing: 0.01em;
+    }
 
     /* ── TRUST STRIP ── */
     .trust-strip {
@@ -585,6 +603,30 @@
     .btn-submit:active { background: rgba(255,255,255,0.7); transform: scale(0.98); }
 
     .btn-submit.sent { background: var(--accent); color: var(--white); }
+
+    #mobile-root .form-success {
+      display: none;
+      margin-top: var(--space-sm);
+      padding: 16px;
+      background: rgba(74, 222, 128, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.22);
+      border-radius: 8px;
+    }
+
+    #mobile-root .form-success.visible { display: block; }
+
+    #mobile-root .form-success h3 {
+      font-size: var(--text-md);
+      color: var(--green-glow);
+      margin-bottom: 4px;
+    }
+
+    #mobile-root .form-success p {
+      font-size: var(--text-base);
+      line-height: 1.45;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 0;
+    }
 
     /* ── FOOTER ── */
     #mobile-root footer {
@@ -816,6 +858,12 @@
       align-items: center;
       gap: 4px;
     }
+
+    #desktop-root .depth-mark--0 { top: 10%; }
+    #desktop-root .depth-mark--1 { top: 28%; }
+    #desktop-root .depth-mark--2 { top: 46%; }
+    #desktop-root .depth-mark--3 { top: 64%; }
+    #desktop-root .depth-mark--4 { top: 82%; }
 
     #desktop-root .depth-mark::before {
       content: '';
@@ -1257,6 +1305,11 @@
     }
 
     #desktop-root .about-text p { font-size: 0.9rem; }
+    #desktop-root .about-lead {
+      font-style: italic;
+      opacity: 0.95;
+      margin-bottom: clamp(14px, 1.4vw, 22px);
+    }
 
     #desktop-root .about-sidebar { display: flex; flex-direction: column; gap: clamp(12px, 1.5vw, 20px); }
 
@@ -1587,7 +1640,7 @@
 
 <div id="mobile-root">
 
-  <nav>
+  <nav aria-label="Mobile section navigation">
     <a class="nav-logo" href="#home">Maxilium <span>Groundwater</span></a>
     <ul class="nav-links">
       <li><a href="#home" data-i18n="nav.home">Home</a></li>
@@ -1668,9 +1721,10 @@
     </div>
 
     <div class="hero-info">
+      <h1 class="mobile-hero-title">Maxilium<br><span>Groundwater</span></h1>
       <span class="hero-tag"><span class="status-dot"></span><span data-i18n="hero.tag">Status · Operational</span></span>
       <p class="hero-sub" data-i18n="hero.sub">Strategic Groundwater Reserves — Scandinavia</p>
-      <p class="hero-sub-block" data-i18n="hero.sub2"></p>
+      <p class="hero-sub-block" data-i18n="hero.sub2">Development and action plan for securing groundwater resources — for the establishment of groundwater sources 2025–2030.</p>
     </div>
 
     <div class="hero-wave" aria-hidden="true">
@@ -1707,23 +1761,24 @@
   <section id="about">
     <p class="section-label reveal" data-i18n="about.label">About us</p>
     <h2 class="section-title reveal" data-i18n-html="about.title">Built for the most<br>demanding environments</h2>
-    <p class="section-body about-para reveal" data-i18n="about.p1"></p>
-    <p class="section-body about-para reveal" data-i18n="about.p2"></p>
-    <p class="section-body about-para reveal" data-i18n="about.p3"></p>
-    <p class="section-body about-para reveal" data-i18n="about.p4"></p>
-    <p class="section-body about-para reveal" data-i18n="about.p5"></p>
-    <p class="section-body about-para reveal" data-i18n="about.p6"></p>
+    <p class="section-body about-lead reveal" data-i18n="about.lead">Development and action plan for securing groundwater resources. And for the establishment of groundwater sources 2025–2027.</p>
+    <p class="section-body about-para reveal" data-i18n="about.p1">My name is Lars Falk. My colleagues and I have, over almost three decades (founded 1992), developed a programme and business concept for locating and evaluating suitable land areas to establish wells, and to produce and secure drinking water from groundwater sources in Scandinavia.</p>
+    <p class="section-body about-para reveal" data-i18n="about.p2">Today, our water resources are a highly topical issue, and public awareness of the importance of having access to clean water cannot be taken for granted.</p>
+    <p class="section-body about-para reveal" data-i18n="about.p3">To supply 50,000 residents/personnel with approximately 3 litres of drinking water per day requires access to 150,000 litres per day — or 54,750,000 litres per year — from a secured drinking water well.</p>
+    <p class="section-body about-para reveal" data-i18n="about.p4">Over the years, we have continuously updated our development and action plan for groundwater sources for the target groups we have focused on since the 1990s.</p>
+    <p class="section-body about-para reveal" data-i18n="about.p5">The global situation is entirely different today, and our chosen target groups are the Armed Forces, Police and Rescue Services, Municipalities, and Institutions in each respective country.</p>
+    <p class="section-body about-para reveal" data-i18n="about.p6">Today, 2025–2027, our entire development and action plan for groundwater is classified for security and confidentiality. We present no details on our website — this is initially communicated verbally upon request, during a physical meeting.</p>
   </section>
 
   <!-- GALLERY -->
   <section class="gallery-section">
     <div class="gallery-grid">
-      <div class="gallery-item reveal"><img src="images/Untitled.png" alt="Groundwater survey site"></div>
-      <div class="gallery-item reveal"><img src="images/Untitled 1.png" alt="Field operations"></div>
-      <div class="gallery-item reveal"><img src="images/Untitled 2.png" alt="Well infrastructure"></div>
-      <div class="gallery-item reveal"><img src="images/Untitled 3.png" alt="Groundwater assessment"></div>
-      <div class="gallery-item reveal"><img src="images/Untitled 4.png" alt="Subsurface analysis"></div>
-      <div class="gallery-item reveal"><img src="images/Untitled 5.png" alt="Water source development"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled.png" alt="Groundwater survey site" width="612" height="408" loading="lazy" decoding="async"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled 1.png" alt="Field operations" width="597" height="396" loading="lazy" decoding="async"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled 2.png" alt="Well infrastructure" width="438" height="253" loading="lazy" decoding="async"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled 3.png" alt="Groundwater assessment" width="373" height="250" loading="lazy" decoding="async"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled 4.png" alt="Subsurface analysis" width="442" height="253" loading="lazy" decoding="async"></div>
+      <div class="gallery-item reveal"><img src="images/Untitled 5.png" alt="Water source development" width="627" height="387" loading="lazy" decoding="async"></div>
     </div>
   </section>
 
@@ -1754,13 +1809,17 @@
             </div>
             <div>
               <p class="contact-item-label" data-i18n="ci.phone">Phone</p>
-              <a class="contact-item-value" href="tel:+46702605690">070-260 56 90 Lars Falk</a>
+              <a class="contact-item-value" href="tel:+46702605690">070&#8209;260&nbsp;56&nbsp;90</a>
+              <span class="contact-item-value"> Lars Falk</span>
             </div>
           </div>
         </div>
       </div>
 
-      <form>
+      <form action="https://formsubmit.co/lars.falk@maxilium.se" method="POST">
+        <input type="hidden" name="_subject" value="New Maxilium Groundwater enquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://j123-collab.github.io/grundvatten-geological/?submitted=1">
         <div class="trust-strip">
           <div class="trust-item">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
@@ -1777,15 +1836,15 @@
         </div>
         <div class="field">
           <label for="name" data-i18n="f.name">Full name</label>
-          <input type="text" id="name" name="name" data-i18n-ph="f.name.ph" placeholder="Cpl. J. Smith" required />
+          <input type="text" id="name" name="name" data-i18n-ph="f.name.ph" placeholder="Cpl. J. Smith" required>
         </div>
         <div class="field">
           <label for="org" data-i18n="f.org">Organisation</label>
-          <input type="text" id="org" name="org" data-i18n-ph="f.org.ph" placeholder="Unit or agency" />
+          <input type="text" id="org" name="org" data-i18n-ph="f.org.ph" placeholder="Unit or agency">
         </div>
         <div class="field">
           <label for="email" data-i18n="f.email">Email</label>
-          <input type="email" id="email" name="email" data-i18n-ph="f.email.ph" placeholder="you@example.com" required />
+          <input type="email" id="email" name="email" data-i18n-ph="f.email.ph" placeholder="you@example.com" required>
         </div>
         <div class="field">
           <label for="service" data-i18n="f.service">Service required</label>
@@ -1803,6 +1862,10 @@
           <textarea id="message" name="message" data-i18n-ph="f.msg.ph" placeholder="Brief description of your requirement…" required></textarea>
         </div>
         <button type="submit" class="btn-submit" data-i18n="f.submit">Send message</button>
+        <div class="form-success" id="mobile-form-success" role="status" aria-live="polite">
+          <h3 data-i18n="f.success.title">Request Submitted</h3>
+          <p data-i18n="f.success.msg">Your briefing request has been received. You will be contacted through secure channels.</p>
+        </div>
       </form>
     </div>
   </section>
@@ -1820,16 +1883,16 @@
 
   </div><!-- /ocean-depth -->
 
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightbox-close">&#x2715;</button>
-    <button class="lightbox-prev" id="lightbox-prev">&#8592;</button>
-    <img id="lightbox-img" src="" alt="">
-    <button class="lightbox-next" id="lightbox-next">&#8594;</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close image preview">&#x2715;</button>
+    <button type="button" class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#8592;</button>
+    <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Expanded gallery image">
+    <button type="button" class="lightbox-next" id="lightbox-next" aria-label="Next image">&#8594;</button>
   </div>
 
   <div class="lang-toggle">
-    <button class="lang-btn active" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="sv">SV</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn active" data-lang="sv">SV</button>
   </div>
 
   <div class="depth-meter" aria-hidden="true">
@@ -1850,11 +1913,11 @@
 
   <!-- Depth markers (left margin) -->
   <div class="depth-markers" aria-hidden="true">
-    <div class="depth-mark" style="top: 10%"><span>0m</span></div>
-    <div class="depth-mark" style="top: 28%"><span>25m</span></div>
-    <div class="depth-mark" style="top: 46%"><span>50m</span></div>
-    <div class="depth-mark" style="top: 64%"><span>75m</span></div>
-    <div class="depth-mark" style="top: 82%"><span>100m</span></div>
+    <div class="depth-mark depth-mark--0"><span>0m</span></div>
+    <div class="depth-mark depth-mark--1"><span>25m</span></div>
+    <div class="depth-mark depth-mark--2"><span>50m</span></div>
+    <div class="depth-mark depth-mark--3"><span>75m</span></div>
+    <div class="depth-mark depth-mark--4"><span>100m</span></div>
   </div>
 
   <!-- STRATUM 0: HERO -->
@@ -1933,8 +1996,8 @@
         <div class="hero-text">
           <div class="hero-lang">
             <div id="langToggle" class="lang-toggle">
-              <button class="lang-btn active" data-lang="en">EN</button>
-              <button class="lang-btn" data-lang="sv">SV</button>
+              <button type="button" class="lang-btn" data-lang="en">EN</button>
+              <button type="button" class="lang-btn active" data-lang="sv">SV</button>
             </div>
           </div>
           <div class="hero-est">
@@ -1958,9 +2021,9 @@
               <span class="hero-meta__label" data-i18n="opsLabel">Operations</span>
             </span>
           </div>
-          <nav class="hero-nav" aria-label="Section navigation">
-            <button class="hero-nav__link" data-goto="1" data-i18n="navAbout">About</button>
-            <button class="hero-nav__link" data-goto="2" data-i18n="navContact">Contact</button>
+          <nav class="hero-nav" aria-label="Desktop hero navigation">
+            <button type="button" class="hero-nav__link" data-goto="1" data-i18n="navAbout">About</button>
+            <button type="button" class="hero-nav__link" data-goto="2" data-i18n="navContact">Contact</button>
           </nav>
         </div><!-- /.hero-text -->
       </div><!-- /.hero-columns -->
@@ -1976,12 +2039,13 @@
       </div>
       <div class="about-grid">
         <div class="about-text">
-          <p data-i18n="aboutP1">My name is Lars Falk. My colleagues and I have, over more than three decades, developed a programme and concept for locating and evaluating suitable land areas to establish wells for producing and securing drinking water from groundwater sources in Scandinavia.</p>
+          <p class="about-lead" data-i18n="aboutLead">Development and action plan for securing groundwater resources. And for the establishment of groundwater sources 2025–2027.</p>
+          <p data-i18n="aboutP1">My name is Lars Falk. My colleagues and I have, over almost three decades (founded 1992), developed a programme and business concept for locating and evaluating suitable land areas to establish wells, and to produce and secure drinking water from groundwater sources in Scandinavia.</p>
           <p data-i18n="aboutP2">Today, our water resources are a highly topical issue, and public awareness of the importance of having access to clean water cannot be taken for granted.</p>
-          <p data-i18n="aboutP3">To supply 100,000 people with approximately 3 litres of drinking water per day requires access to an extraction of 300,000 litres per day — or 54,750,000 litres per year — from a secured well or source.</p>
-          <p data-i18n="aboutP4">Over the years, we have continuously updated our development and action plan with strategic methods to secure groundwater sources for the target groups we were in dialogue with as far back as the 1990s. At that time, there was no need to develop private wells within a classified groundwater source.</p>
-          <p data-i18n="aboutP5">Today, the global situation is entirely different. Our chosen target groups are the Armed Forces, Police and Rescue Services, MCF, Municipalities, and Institutions.</p>
-          <p data-i18n="aboutP6">We have chosen to place a high level of confidentiality on our groundwater development and action plan. We present no details on our website — this is communicated verbally upon request, during a physical meeting.</p>
+          <p data-i18n="aboutP3">To supply 50,000 residents/personnel with approximately 3 litres of drinking water per day requires access to 150,000 litres per day — or 54,750,000 litres per year — from a secured drinking water well.</p>
+          <p data-i18n="aboutP4">Over the years, we have continuously updated our development and action plan for groundwater sources for the target groups we have focused on since the 1990s.</p>
+          <p data-i18n="aboutP5">The global situation is entirely different today, and our chosen target groups are the Armed Forces, Police and Rescue Services, Municipalities, and Institutions in each respective country.</p>
+          <p data-i18n="aboutP6">Today, 2025–2027, our entire development and action plan for groundwater is classified for security and confidentiality. We present no details on our website — this is initially communicated verbally upon request, during a physical meeting.</p>
         </div>
         <div class="about-sidebar">
           <div class="fact-card">
@@ -2011,28 +2075,32 @@
           <h2 class="section-heading__title" data-i18n="contactTitle">Contact</h2>
           <p class="d-contact-body" data-i18n="contactBody">Whether you have an active requirement or want to discuss a future project, our team is ready to help.</p>
 
-          <form id="contactForm" class="d-contact-form" novalidate>
+          <form id="contactForm" class="d-contact-form" action="https://formsubmit.co/lars.falk@maxilium.se" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="New Maxilium Groundwater enquiry">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://j123-collab.github.io/grundvatten-geological/?submitted=1">
             <div class="field">
               <label for="formName" data-i18n="formName">Full name</label>
-              <input class="form-input" type="text" id="formName" name="name" required data-i18n-placeholder="formNamePh" placeholder="Cpl. J. Smith">
-              <span class="form-error" data-i18n="formNameError">Name is required</span>
+              <input class="form-input" type="text" id="formName" name="name" required aria-describedby="formNameError" data-i18n-placeholder="formNamePh" placeholder="Cpl. J. Smith">
+              <span class="form-error" id="formNameError" data-i18n="formNameError">Name is required</span>
             </div>
             <div class="field">
               <label for="formOrg" data-i18n="formOrg">Organisation</label>
-              <input class="form-input" type="text" id="formOrg" name="org" required data-i18n-placeholder="formOrgPh" placeholder="Unit or agency">
-              <span class="form-error" data-i18n="formOrgError">Organisation is required</span>
+              <input class="form-input" type="text" id="formOrg" name="org" required aria-describedby="formOrgError" data-i18n-placeholder="formOrgPh" placeholder="Unit or agency">
+              <span class="form-error" id="formOrgError" data-i18n="formOrgError">Organisation is required</span>
             </div>
             <div class="field">
               <label for="formEmail" data-i18n="formEmail">Email</label>
-              <input class="form-input" type="email" id="formEmail" name="email" required data-i18n-placeholder="formEmailPh" placeholder="you@example.com">
-              <span class="form-error" data-i18n="formEmailError">Valid email is required</span>
+              <input class="form-input" type="email" id="formEmail" name="email" required aria-describedby="formEmailError" data-i18n-placeholder="formEmailPh" placeholder="you@example.com">
+              <span class="form-error" id="formEmailError" data-i18n="formEmailError">Valid email is required</span>
             </div>
             <div class="field">
               <label for="formMsg" data-i18n="formMsg">Message</label>
-              <textarea class="form-input form-textarea" id="formMsg" name="message" required data-i18n-placeholder="formMsgPh" placeholder="Brief description of your requirement…"></textarea>
+              <textarea class="form-input form-textarea" id="formMsg" name="message" required aria-describedby="formMsgError" data-i18n-placeholder="formMsgPh" placeholder="Brief description of your requirement…"></textarea>
+              <span class="form-error" id="formMsgError" data-i18n="formMsgError">Message is required</span>
             </div>
             <button class="btn-submit d-btn-submit" type="submit" data-i18n="formSubmit">Send message</button>
-            <div class="form-success" id="formSuccess">
+            <div class="form-success" id="formSuccess" role="status" aria-live="polite">
               <h3 data-i18n="formSuccessTitle">Request Submitted</h3>
               <p data-i18n="formSuccessMsg">Your briefing request has been received. You will be contacted through secure channels.</p>
             </div>
@@ -2061,7 +2129,8 @@
               </div>
               <div>
                 <p class="contact-item-label" data-i18n="ciPhone">Phone</p>
-                <a class="contact-item-value" href="tel:+46702605690">070-260 56 90 Lars Falk</a>
+                <a class="contact-item-value" href="tel:+46702605690">070&#8209;260&nbsp;56&nbsp;90</a>
+                <span class="contact-item-value"> Lars Falk</span>
               </div>
             </div>
           </div>
@@ -2080,10 +2149,10 @@
   </section>
 
   <!-- Navigation dots -->
-  <nav class="nav-dots" aria-label="Section navigation">
-    <button class="nav-dot active" data-index="0" aria-label="Hero"></button>
-    <button class="nav-dot" data-index="1" aria-label="About"></button>
-    <button class="nav-dot" data-index="2" aria-label="Contact"></button>
+  <nav class="nav-dots" aria-label="Desktop depth navigation">
+    <button type="button" class="nav-dot active" data-index="0" aria-label="Hero"></button>
+    <button type="button" class="nav-dot" data-index="1" aria-label="About"></button>
+    <button type="button" class="nav-dot" data-index="2" aria-label="Contact"></button>
   </nav>
 
   <!-- Fixed wave overlay -->
@@ -2113,6 +2182,8 @@
   });
 })();
 
+var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 if (window.innerWidth < 768) {
   /* ═══════════════════════════════════════
      MOBILE JS
@@ -2128,12 +2199,13 @@ if (window.innerWidth < 768) {
       'hero.sub2': 'Development and action plan for securing groundwater resources — for the establishment of groundwater sources 2025–2030.',
       'about.label': 'About us',
       'about.title': 'Built for the most<br>demanding environments',
-      'about.p1': 'My name is Lars Falk. My colleagues and I have, over more than three decades, developed a programme and concept for locating and evaluating suitable land areas to establish wells for producing and securing drinking water from groundwater sources in Scandinavia.',
+      'about.lead': 'Development and action plan for securing groundwater resources. And for the establishment of groundwater sources 2025–2027.',
+      'about.p1': 'My name is Lars Falk. My colleagues and I have, over almost three decades (founded 1992), developed a programme and business concept for locating and evaluating suitable land areas to establish wells, and to produce and secure drinking water from groundwater sources in Scandinavia.',
       'about.p2': 'Today, our water resources are a highly topical issue, and public awareness of the importance of having access to clean water cannot be taken for granted.',
-      'about.p3': 'To supply 100,000 people with approximately 3 litres of drinking water per day requires access to an extraction of 300,000 litres per day — or 54,750,000 litres per year — from a secured well or source.',
-      'about.p4': 'Over the years, we have continuously updated our development and action plan with strategic methods to secure groundwater sources for the target groups we were in dialogue with as far back as the 1990s. At that time, there was no need to develop private wells within a classified groundwater source.',
-      'about.p5': 'Today, the global situation is entirely different. Our chosen target groups are the Armed Forces, Police and Rescue Services, MCF, Municipalities, and Institutions.',
-      'about.p6': 'We have chosen to place a high level of confidentiality on our groundwater development and action plan. We present no details on our website — this is communicated verbally upon request, during a physical meeting.',
+      'about.p3': 'To supply 50,000 residents/personnel with approximately 3 litres of drinking water per day requires access to 150,000 litres per day — or 54,750,000 litres per year — from a secured drinking water well.',
+      'about.p4': 'Over the years, we have continuously updated our development and action plan for groundwater sources for the target groups we have focused on since the 1990s.',
+      'about.p5': 'The global situation is entirely different today, and our chosen target groups are the Armed Forces, Police and Rescue Services, Municipalities, and Institutions in each respective country.',
+      'about.p6': 'Today, 2025–2027, our entire development and action plan for groundwater is classified for security and confidentiality. We present no details on our website — this is initially communicated verbally upon request, during a physical meeting.',
       'contact.label': 'Contact',
       'contact.title': "Contact",
       'contact.body': 'If interested, please fill in your contact details in our form and we will get back to you.',
@@ -2155,6 +2227,8 @@ if (window.innerWidth < 768) {
       'f.message': 'Message',
       'f.msg.ph': 'Brief description of your requirement…',
       'f.submit': 'Send message',
+      'f.success.title': 'Request Submitted',
+      'f.success.msg': 'Your briefing request has been received. You will be contacted through secure channels.',
       'footer.copy': '© 2026 Maxilium Groundwater. All rights reserved.',
       'footer.tag': 'Specialist Military Groundwater Services',
     },
@@ -2168,12 +2242,13 @@ if (window.innerWidth < 768) {
       'hero.sub2': 'Utvecklings- och handlingsplan för säkerställande av grundvattenresurser — för etablering av grundvattentäkter år 2025–2030.',
       'about.label': 'Om oss',
       'about.title': 'Byggd för de mest<br>krävande miljöerna',
-      'about.p1': 'Mitt namn är Lars Falk. Jag och mina kollegor har under drygt tre decennier utvecklat ett program och ett koncept för att lokalisera och utvärdera ett lämpligt markområde för att etablera brunnar för att producera och säkerställa dricksvatten från grundvattentäkter i Skandinavien.',
+      'about.lead': 'Utveckling- och handlingsplan för säkerställande av grundvattenresurser. Och för etablering av grundvattentäkter år 2025–2027.',
+      'about.p1': 'Mitt namn är Lars Falk. Jag och mina kollegor har under dryg tre decennier (uppstart 1992) utvecklat ett program och ett affärskoncept för att lokalisera och utvärdera ett lämpligt markområde för att etablera brunnar, producera och säkerställa dricksvatten från grundvattentäkter i Skandinavien.',
       'about.p2': 'Idag är våra vattenresurser högaktuella och den allmänna kunskapen om vikten av att ha tillgång till rent vatten är inte en självklarhet.',
-      'about.p3': 'För att försörja 100 000 personer med ca 3 liter dricksvatten per dag krävs tillgång till ett uttag av 300 000 liter per dygn eller 54 750 000 liter per år från en säkerställd brunn/täkt.',
-      'about.p4': 'Vi har löpande under åren uppdaterat vår utvecklings- och handlingsplan med strategiska metoder för att säkerställa grundvattentäkter för de målgrupper vi hade en dialog med redan under 90-talet. Vid den tidpunkten fanns inte behovet av att utveckla egna brunnar i en sekretessklassad grundvattentäkt.',
-      'about.p5': 'Idag är världsлäget helt annorlunda och vårt val av målgrupper är Försvarsmakten, Polis- och Räddningstjänst, MCF, Kommuner och Institutioner.',
-      'about.p6': 'Idag har vi valt att lägga en hög sekretess på vår utvecklings- och handlingsplan för grundvatten. Vi presenterar inga detaljer på vår hemsida utan det sker verbalt efter förfrågan under ett fysiskt möte.',
+      'about.p3': 'För att försörja 50 000 invånare/personal med ca 3 liter dricksvatten per dag krävs en tillgång på 150 000 liter per dag eller 54 750 000 liter per år en säkerställd dricksvattenbrunn.',
+      'about.p4': 'Vi har löpande under åren uppdaterat vår utveckling-och handlingsplan för grundvattentäkter för de målgrupper vi inriktat oss till redan under 90-talet.',
+      'about.p5': 'Världsläget är helt annorlunda idag och vårt val av målgrupper är Försvarsmakten, Polis- och Räddningstjänst, Kommuner och Institutioner i respektive land.',
+      'about.p6': 'Idag 2025-2027 är hela vår utvecklings- och handlingsplan för grundvatten säkerhets- och sekretess klassat. Vi presenterar inga detaljer på vår hemsida utan det sker initialt verbalt efter förfrågan vid ett fysiskt möte.',
       'contact.label': 'Kontakt',
       'contact.title': 'Kontakta oss',
       'contact.body': 'Vid intresse fyll i dina kontaktuppgifter i vårt formulär så tar vi kontakt med er.',
@@ -2195,12 +2270,14 @@ if (window.innerWidth < 768) {
       'f.message': 'Meddelande',
       'f.msg.ph': 'Kort beskrivning av ert krav…',
       'f.submit': 'Skicka meddelande',
+      'f.success.title': 'Förfrågan skickad',
+      'f.success.msg': 'Din förfrågan har mottagits. Du kommer att kontaktas via säkra kanaler.',
       'footer.copy': '© 2026 Maxilium Groundwater. Alla rättigheter förbehållna.',
       'footer.tag': 'Specialiserade militära grundvattentjänster',
     }
   };
 
-  let currentLang = localStorage.getItem('lang') || 'en';
+  let currentLang = localStorage.getItem('lang') || 'sv';
 
   function applyLang(lang) {
     currentLang = lang;
@@ -2246,20 +2323,43 @@ if (window.innerWidth < 768) {
       activeCountry = (activeCountry + 1) % countries.length;
     }
     cycleCountry();
-    var cycleTimer = setInterval(cycleCountry, 4000);
+    if (!reduceMotion) {
+      var cycleTimer = setInterval(cycleCountry, 4000);
+    }
   })();
 
   const mobileForm = document.querySelector('#mobile-root form');
+  const mobileSuccess = document.getElementById('mobile-form-success');
+  const mobileSubmitted = new URLSearchParams(window.location.search).get('submitted') === '1';
   if (mobileForm) {
     mobileForm.addEventListener('submit', handleSubmit);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.btn-submit');
+  function markMobileSubmitted() {
+    const btn = mobileForm ? mobileForm.querySelector('.btn-submit') : null;
+    if (!btn) return;
     btn.textContent = currentLang === 'sv' ? 'Meddelande skickat ✓' : 'Message sent ✓';
     btn.classList.add('sent');
     btn.disabled = true;
+    if (mobileSuccess) mobileSuccess.classList.add('visible');
+  }
+
+  function handleSubmit(e) {
+    const btn = e.target.querySelector('.btn-submit');
+    if (!btn) return;
+    btn.textContent = currentLang === 'sv' ? 'Skickar…' : 'Sending…';
+    btn.disabled = true;
+  }
+
+  if (mobileSubmitted && mobileForm) {
+    markMobileSubmitted();
+    requestAnimationFrame(() => {
+      const contact = document.getElementById('contact');
+      if (contact) contact.scrollIntoView({ block: 'start' });
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, document.title, window.location.pathname);
+      }
+    });
   }
 
   // Scroll reveal
@@ -2347,12 +2447,13 @@ if (window.innerWidth >= 768) {
       navAbout: "About",
       navContact: "Contact",
       aboutTitle: "About",
-      aboutP1: "My name is Lars Falk. My colleagues and I have, over more than three decades, developed a programme and concept for locating and evaluating suitable land areas to establish wells for producing and securing drinking water from groundwater sources in Scandinavia.",
+      aboutLead: "Development and action plan for securing groundwater resources. And for the establishment of groundwater sources 2025–2027.",
+      aboutP1: "My name is Lars Falk. My colleagues and I have, over almost three decades (founded 1992), developed a programme and business concept for locating and evaluating suitable land areas to establish wells, and to produce and secure drinking water from groundwater sources in Scandinavia.",
       aboutP2: "Today, our water resources are a highly topical issue, and public awareness of the importance of having access to clean water cannot be taken for granted.",
-      aboutP3: "To supply 100,000 people with approximately 3 litres of drinking water per day requires access to an extraction of 300,000 litres per day — or 54,750,000 litres per year — from a secured well or source.",
-      aboutP4: "Over the years, we have continuously updated our development and action plan with strategic methods to secure groundwater sources for the target groups we were in dialogue with as far back as the 1990s. At that time, there was no need to develop private wells within a classified groundwater source.",
-      aboutP5: "Today, the global situation is entirely different. Our chosen target groups are the Armed Forces, Police and Rescue Services, MCF, Municipalities, and Institutions.",
-      aboutP6: "We have chosen to place a high level of confidentiality on our groundwater development and action plan. We present no details on our website — this is communicated verbally upon request, during a physical meeting.",
+      aboutP3: "To supply 50,000 residents/personnel with approximately 3 litres of drinking water per day requires access to 150,000 litres per day — or 54,750,000 litres per year — from a secured drinking water well.",
+      aboutP4: "Over the years, we have continuously updated our development and action plan for groundwater sources for the target groups we have focused on since the 1990s.",
+      aboutP5: "The global situation is entirely different today, and our chosen target groups are the Armed Forces, Police and Rescue Services, Municipalities, and Institutions in each respective country.",
+      aboutP6: "Today, 2025–2027, our entire development and action plan for groundwater is classified for security and confidentiality. We present no details on our website — this is initially communicated verbally upon request, during a physical meeting.",
       sinceUnit: "30+ years in the field",
       factNato: "NATO min. / soldier / day",
       factSurvival: "Human survival without water",
@@ -2382,6 +2483,7 @@ if (window.innerWidth >= 768) {
       formNameError: "Name is required",
       formOrgError: "Organisation is required",
       formEmailError: "Valid email is required",
+      formMsgError: "Message is required",
       formSuccessTitle: "Request Submitted",
       formSuccessMsg: "Your briefing request has been received. You will be contacted through secure channels."
     },
@@ -2393,12 +2495,13 @@ if (window.innerWidth >= 768) {
       navAbout: "Om",
       navContact: "Kontakt",
       aboutTitle: "Om oss",
-      aboutP1: "Mitt namn är Lars Falk. Jag och mina kollegor har under drygt tre decennier utvecklat ett program och ett koncept för att lokalisera och utvärdera ett lämpligt markområde för att etablera brunnar för att producera och säkerställa dricksvatten från grundvattentäkter i Skandinavien.",
+      aboutLead: "Utveckling- och handlingsplan för säkerställande av grundvattenresurser. Och för etablering av grundvattentäkter år 2025–2027.",
+      aboutP1: "Mitt namn är Lars Falk. Jag och mina kollegor har under dryg tre decennier (uppstart 1992) utvecklat ett program och ett affärskoncept för att lokalisera och utvärdera ett lämpligt markområde för att etablera brunnar, producera och säkerställa dricksvatten från grundvattentäkter i Skandinavien.",
       aboutP2: "Idag är våra vattenresurser högaktuella och den allmänna kunskapen om vikten av att ha tillgång till rent vatten är inte en självklarhet.",
-      aboutP3: "För att försörja 100 000 personer med ca 3 liter dricksvatten per dag krävs tillgång till ett uttag av 300 000 liter per dygn eller 54 750 000 liter per år från en säkerställd brunn/täkt.",
-      aboutP4: "Vi har löpande under åren uppdaterat vår utvecklings- och handlingsplan med strategiska metoder för att säkerställa grundvattentäkter för de målgrupper vi hade en dialog med redan under 90-talet. Vid den tidpunkten fanns inte behovet av att utveckla egna brunnar i en sekretessklassad grundvattentäkt.",
-      aboutP5: "Idag är världsläget helt annorlunda och vårt val av målgrupper är Försvarsmakten, Polis- och Räddningstjänst, MCF, Kommuner och Institutioner.",
-      aboutP6: "Idag har vi valt att lägga en hög sekretess på vår utvecklings- och handlingsplan för grundvatten. Vi presenterar inga detaljer på vår hemsida utan det sker verbalt efter förfrågan under ett fysiskt möte.",
+      aboutP3: "För att försörja 50 000 invånare/personal med ca 3 liter dricksvatten per dag krävs en tillgång på 150 000 liter per dag eller 54 750 000 liter per år en säkerställd dricksvattenbrunn.",
+      aboutP4: "Vi har löpande under åren uppdaterat vår utveckling-och handlingsplan för grundvattentäkter för de målgrupper vi inriktat oss till redan under 90-talet.",
+      aboutP5: "Världsläget är helt annorlunda idag och vårt val av målgrupper är Försvarsmakten, Polis- och Räddningstjänst, Kommuner och Institutioner i respektive land.",
+      aboutP6: "Idag 2025-2027 är hela vår utvecklings- och handlingsplan för grundvatten säkerhets- och sekretess klassat. Vi presenterar inga detaljer på vår hemsida utan det sker initialt verbalt efter förfrågan vid ett fysiskt möte.",
       sinceUnit: "30+ år i fält",
       factNato: "NATO min. / soldat / dag",
       factSurvival: "Mänsklig överlevnad utan vatten",
@@ -2428,6 +2531,7 @@ if (window.innerWidth >= 768) {
       formNameError: "Namn krävs",
       formOrgError: "Organisation krävs",
       formEmailError: "Giltig e-postadress krävs",
+      formMsgError: "Meddelande krävs",
       formSuccessTitle: "Förfrågan skickad",
       formSuccessMsg: "Din förfrågan har mottagits. Du kommer att kontaktas via säkra kanaler."
     }
@@ -2437,7 +2541,8 @@ if (window.innerWidth >= 768) {
     'use strict';
 
     var desktopRoot = document.getElementById('desktop-root');
-    var currentLang = 'en';
+    var currentLang = localStorage.getItem('lang') || 'sv';
+    var formWasSubmitted = new URLSearchParams(window.location.search).get('submitted') === '1';
     var langButtons = desktopRoot.querySelectorAll('#langToggle .lang-btn');
     var contactForm = desktopRoot.querySelector('#contactForm');
     var successBox = desktopRoot.querySelector('#formSuccess');
@@ -2459,6 +2564,12 @@ if (window.innerWidth >= 768) {
 
     function animateMarker(i, from, to, delay) {
       setTimeout(function () {
+        if (reduceMotion) {
+          var staticSpan = depthMarks[i].querySelector('span');
+          staticSpan.textContent = to + 'm';
+          currentDepths[i] = to;
+          return;
+        }
         if (depthAnims[i]) cancelAnimationFrame(depthAnims[i]);
         var span = depthMarks[i].querySelector('span');
         var start = null;
@@ -2558,6 +2669,8 @@ if (window.innerWidth >= 768) {
     function setLanguage(lang) {
       if (!translations || !translations[lang]) return;
       currentLang = lang;
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+      document.documentElement.lang = lang;
       var t = translations[lang];
 
       desktopRoot.querySelectorAll('[data-i18n]').forEach(function (el) {
@@ -2584,24 +2697,35 @@ if (window.innerWidth >= 768) {
     });
 
     // ---- Contact Form ----
+    function showFormSuccess() {
+      contactForm.querySelectorAll('.field, .btn-submit').forEach(function (el) {
+        el.style.display = 'none';
+      });
+      if (successBox) successBox.classList.add('visible');
+    }
+
     if (contactForm) {
       contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
         var valid = true;
 
         contactForm.querySelectorAll('.form-error').forEach(function (el) { el.classList.remove('visible'); });
-        contactForm.querySelectorAll('.form-input').forEach(function (el) { el.classList.remove('error'); });
+        contactForm.querySelectorAll('.form-input').forEach(function (el) {
+          el.classList.remove('error');
+          el.setAttribute('aria-invalid', 'false');
+        });
 
         var nameInput = contactForm.querySelector('#formName');
         if (!nameInput.value.trim()) {
           valid = false;
           nameInput.classList.add('error');
+          nameInput.setAttribute('aria-invalid', 'true');
           nameInput.parentElement.querySelector('.form-error').classList.add('visible');
         }
         var orgInput = contactForm.querySelector('#formOrg');
         if (!orgInput.value.trim()) {
           valid = false;
           orgInput.classList.add('error');
+          orgInput.setAttribute('aria-invalid', 'true');
           orgInput.parentElement.querySelector('.form-error').classList.add('visible');
         }
         var emailInput = contactForm.querySelector('#formEmail');
@@ -2609,18 +2733,39 @@ if (window.innerWidth >= 768) {
         if (!emailInput.value.trim() || !emailPattern.test(emailInput.value.trim())) {
           valid = false;
           emailInput.classList.add('error');
+          emailInput.setAttribute('aria-invalid', 'true');
           emailInput.parentElement.querySelector('.form-error').classList.add('visible');
         }
-        if (valid) {
-          contactForm.querySelectorAll('.field, .btn-submit').forEach(function (el) {
-            el.style.display = 'none';
-          });
-          if (successBox) successBox.classList.add('visible');
+
+        var msgInput = contactForm.querySelector('#formMsg');
+        if (!msgInput.value.trim()) {
+          valid = false;
+          msgInput.classList.add('error');
+          msgInput.setAttribute('aria-invalid', 'true');
+          msgInput.parentElement.querySelector('.form-error').classList.add('visible');
+        }
+
+        if (!valid) {
+          e.preventDefault();
+          return;
+        }
+
+        var submitBtn = contactForm.querySelector('.btn-submit');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = currentLang === 'sv' ? 'Skickar…' : 'Sending…';
         }
       });
     }
 
-    setLanguage('en');
+    setLanguage(currentLang);
+    if (formWasSubmitted && contactForm) {
+      goTo(2);
+      showFormSuccess();
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, document.title, window.location.pathname);
+      }
+    }
 
     // ---- Country Cycling ----
     var mapCountries = ['se', 'no', 'fi'];
@@ -2634,7 +2779,9 @@ if (window.innerWidth >= 768) {
     }
     if (mapSvg) {
       cycleCountry();
-      var cycleTimer = setInterval(cycleCountry, 4000);
+      if (!reduceMotion) {
+        var cycleTimer = setInterval(cycleCountry, 4000);
+      }
     }
 
     // ---- Bubble Generation ----
@@ -2755,7 +2902,7 @@ if (window.innerWidth >= 768) {
       }
       requestAnimationFrame(animateWaves);
     }
-    requestAnimationFrame(animateWaves);
+    if (!reduceMotion) requestAnimationFrame(animateWaves);
   })();
 }
 </script>
